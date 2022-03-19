@@ -21,13 +21,12 @@ export const userReducer = createReducer(initialState, {
   RegisterSuccess: (state, action) => {
     state.loading = false;
     state.user = action.payload;
-    
+
   },
   RegisterFailure: (state, action) => {
     state.loading = false;
     state.error = action.payload;
   },
-
   LoadUserRequest: (state) => {
     state.loadign = true;
   },
