@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { FaLock, FaUser } from "react-icons/fa";
 import "./Login.css";
+import {useDispatch} from "react-redux"
+import {loginUser} from '../../Actions/User'
+import {Link} from "react-router-dom"
 const Login = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  
+  const dispatch = useDispatch();
 
   const handleUserInput = (event) => {
     const name = event.target.name;
@@ -17,6 +22,8 @@ const Login = () => {
     event.preventDefault();
 
     const { email, password } = user;
+
+    dispatch(loginUser(email, password));
   };
 
   return (
@@ -59,7 +66,11 @@ const Login = () => {
             <button type="submit" className="submit">
               Log in
             </button>
+            <Link to="/register">
+              New User?
+            </Link>
           </form>
+          
         </div>
       </div>
     </div>
